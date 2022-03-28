@@ -1,0 +1,264 @@
+import 'package:flutter/material.dart';
+import 'package:kmutnb_app/config/constant.dart';
+
+class StdRateKeep extends StatefulWidget {
+  const StdRateKeep({Key? key}) : super(key: key);
+
+  @override
+  _StdRateKeepState createState() => _StdRateKeepState();
+}
+
+class _StdRateKeepState extends State<StdRateKeep> {
+  int _value1 = 0;
+  int _value2 = 0;
+  int _value3 = 0;
+  int _value4 = 0;
+  var data1 = "4";
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ขอเปลี่ยนสถานะ'),
+        centerTitle: true,
+      ),
+      body: Container(
+        color: pColor,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  width: size.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    //color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white,
+                        spreadRadius: 3,
+                      ),
+                    ],
+                  ),
+                  //height: 50,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(8),
+                        width: size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color(0XFFF6EBDA),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0XFFF6EBDA),
+                              spreadRadius: 3,
+                            ),
+                          ],
+                        ),
+                        child: Text(
+                          "การทำแบบประเมินจะมีผลกับ\nการเปลี่ยนสถานะของนักศึกษา",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color(0XFFC38427),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Text(
+                          '1. คุณมีอาการอย่างใดอย่างหนึ่งดังต่อไปนี้มีประวัติไข้ หรือวัดอุณหภูมิได้ตั้งแต่ 37.5 องศาขึ้นไปไอ มีน้ำมูก เจ็บคอ ไม่ได้กลิ่น ลิ้นไม่รับรส หายใจเร็ว หายใจเหนื่อยหรือหายใจลำบาก ตาแดง ผื่น ถ่ายเหลว',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(),
+                        ),
+                      ),
+                      //Radio---------------------------------------------
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Radio(
+                            value: 1,
+                            groupValue: _value1,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value1 = value;
+                              });
+                            },
+                          ),
+                          Text('มี'),
+                          SizedBox(
+                            width: size.width * 0.2,
+                          ),
+                          Radio(
+                            value: 2,
+                            groupValue: _value1,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value1 = value;
+                              });
+                            },
+                          ),
+                          Text('ไม่มี'),
+                        ],
+                      ),
+                      //Radio---------------------------------------------
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Text(
+                          '2. ท่านเดินทางมาจากที่อยู่อาศัยหรือพื้นที่ที่มีรายงานการติดเชื้อ COVID-19 ใน 14 วันที่ผ่านมา',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(),
+                        ),
+                      ),
+                      //Radio---------------------------------------------
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Radio(
+                            value: 1,
+                            groupValue: _value2,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value2 = value;
+                              });
+                            },
+                          ),
+                          Text('มี'),
+                          SizedBox(
+                            width: size.width * 0.2,
+                          ),
+                          Radio(
+                            value: 2,
+                            groupValue: _value2,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value2 = value;
+                              });
+                            },
+                          ),
+                          Text('ไม่มี'),
+                        ],
+                      ),
+                      //Radio---------------------------------------------
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Text(
+                          '3. สมาชิกในครอบครัว/เพื่อน/เพื่อนร่วมงานหรือเดินทางร่วมยานพาหนะ กับผู้ติดเชื้อเข้าข่าย/ผู้ป่วยยืนยัน/',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(),
+                        ),
+                      ),
+                      //Radio---------------------------------------------
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Radio(
+                            value: 1,
+                            groupValue: _value3,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value3 = value;
+                              });
+                            },
+                          ),
+                          Text('มี'),
+                          SizedBox(
+                            width: size.width * 0.2,
+                          ),
+                          Radio(
+                            value: 2,
+                            groupValue: _value3,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value3 = value;
+                              });
+                            },
+                          ),
+                          Text('ไม่มี'),
+                        ],
+                      ),
+                      //Radio---------------------------------------------
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Text(
+                          '4. มีประวัติสัมผัสกับผู้ป่วยยืนยันโรคติดเชื้อไวรัส COVID-19 ',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(),
+                        ),
+                      ),
+                      //Radio---------------------------------------------
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Radio(
+                            value: 1,
+                            groupValue: _value4,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value4 = value;
+                              });
+                            },
+                          ),
+                          Text('มี'),
+                          SizedBox(
+                            width: size.width * 0.2,
+                          ),
+                          Radio(
+                            value: 2,
+                            groupValue: _value4,
+                            onChanged: (dynamic value) {
+                              setState(() {
+                                _value4 = value;
+                              });
+                            },
+                          ),
+                          Text('ไม่มี'),
+                        ],
+                      ),
+                      //Radio---------------------------------------------
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xFF008C0E),
+                          padding: EdgeInsets.fromLTRB(45, 13, 45, 13),
+                          shape: StadiumBorder(),
+                        ),
+                        child: Text(
+                          'ยืนยัน',
+                          style: TextStyle(
+                            fontSize: size.height * 0.026,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          //Navigator.pushNamed(context, 'OfficerLogin');
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Widget _myRadioButton({int? value, dynamic onChanged}) {
+  //   return Radio(
+  //     value: value,
+  //     groupValue: _groupValue,
+  //     onChanged: onChanged,
+  //     //title: Text(title!),
+  //   );
+  // }
+}

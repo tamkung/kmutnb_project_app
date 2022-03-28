@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>532571395722-1ac0q2mvad2ujjd48sab71euvda6qobe.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.532571395722-1ac0q2mvad2ujjd48sab71euvda6qobe</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>532571395722-06cgk75ircupnvpr290qrvbu34ph9tb1.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBn6lHUms6BXi5M1sbnmLld6spYaY8K0-Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>532571395722</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.kmutnbApp</string>
+	<key>PROJECT_ID</key>
+	<string>covid-app-kmutnb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>covid-app-kmutnb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:532571395722:ios:90bb3f127fa52b769d3f73</string>
+	<key>DATABASE_URL</key>
+	<string>https://covid-app-kmutnb-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

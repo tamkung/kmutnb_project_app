@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "532571395722",
+    "firebase_url": "https://covid-app-kmutnb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "covid-app-kmutnb",
+    "storage_bucket": "covid-app-kmutnb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532571395722:android:63af56776984d02f9d3f73",
+        "android_client_info": {
+          "package_name": "com.example.kmutnb_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532571395722-06cgk75ircupnvpr290qrvbu34ph9tb1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kmutnb_app",
+            "certificate_hash": "c22dd84d4d8224f775ca9d5f58292b1ed2535f48"
+          }
+        },
+        {
+          "client_id": "532571395722-9rt1jeshg6f995lea4d0up3a4mjdbju7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kmutnb_app",
+            "certificate_hash": "eb8e34c5104a64b5c95212b5135549b91ff9526b"
+          }
+        },
+        {
+          "client_id": "532571395722-m67n1iqtft4pagnegfseomhda778i4ms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kmutnb_app",
+            "certificate_hash": "4a244fc5dff71a691677ed51f49475fb24823110"
+          }
+        },
+        {
+          "client_id": "532571395722-or65fn0sa8d6e1rf11nan65ufhl8bhec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kmutnb_app",
+            "certificate_hash": "e14e386920a837e622d422e72b736899cfc330a1"
+          }
+        },
+        {
+          "client_id": "532571395722-u0cgfmvrj44tavth735bp196emca6fon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP4wtsCmIrRDHtEUrP3rdoDEhu2BgmK2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532571395722-u0cgfmvrj44tavth735bp196emca6fon.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "532571395722-1ac0q2mvad2ujjd48sab71euvda6qobe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.kmutnbApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
