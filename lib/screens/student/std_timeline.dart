@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kmutnb_app/config/constant.dart';
@@ -18,28 +21,42 @@ class _TimelineState extends State<Timeline> {
   bool chk = false;
   List<String> dateList = [];
   List<String> textList = [];
+  late Timer timer;
+  dynamic status = '';
 
   @override
   void initState() {
-    // TODO: implement initState
+    setState(() {
+      timer = Timer.periodic(Duration(seconds: 3), (Timer t) {
+        getStatus();
+        // print(mounted.toString());
+      });
+    });
     super.initState();
     dateTime = DateTime.now();
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 
   Future<void> sendData() async {
     //for (int i = 0; i < 10; i++) {}
     try {
-      await dbTimeline.child(user!.uid).child(user!.displayName).update({
+      await dbTimeline.child(user!.uid).remove();
+      await dbTimeline.child(user!.uid).update({
         // 'ชื่อ-นามสกุล': user!.displayName,
-        'วันที่ 1 : ${dateList[0]}': textList[0],
-        'วันที่ 2 : ${dateList[1]}': textList[1],
-        'วันที่ 3 : ${dateList[2]}': textList[2],
+        '1 : ${dateList[0]}': textList[0],
+        '2 : ${dateList[1]}': textList[1],
+        '3 : ${dateList[2]}': textList[2],
       }).then((value) async {
         textList = [];
         formKey.currentState!.reset();
         print("Success");
         final snackBar = SnackBar(content: Text('สำเร็จ'));
-        await ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
         Navigator.pop(context);
       }).catchError((onError) {
         print(onError.code);
@@ -60,24 +77,6 @@ class _TimelineState extends State<Timeline> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () async {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                //updateData();
-                sendData();
-                // file == null ? updateData2() : updateData();
-                //formKey.currentState!.reset();
-              }
-              print(textList);
-              //textList = [];
-            },
-            icon: Icon(
-              Icons.send,
-            ),
-          ),
-        ],
         title: Text('ไทม์ไลน์ย้อนหลัง 14 วัน'),
         centerTitle: true,
       ),
@@ -105,21 +104,34 @@ class _TimelineState extends State<Timeline> {
   }
 
   Widget showDate2() {
+    var size = MediaQuery.of(context).size;
     final children = <Widget>[];
     for (var i = 1; i <= 3; i++) {
       var newDate = DateTime(dateTime.year, dateTime.month, dateTime.day - i);
-      String formattedDate = DateFormat('dd - MM - yyyy').format(newDate);
+      String formattedDate = DateFormat('dd-MM-yyyy').format(newDate);
       dateList.add(formattedDate);
       children.add(
-        txtAddr('วันที่ $i : ' + formattedDate),
+        txtTimeLine('วันที่ $i : ' + formattedDate),
       );
     }
+    children.add(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          btnSubmit('บันทึก', Colors.green),
+          SizedBox(
+            width: size.width * 0.15,
+          ),
+          btnSubmit('ยกเลิก', Colors.red),
+        ],
+      ),
+    );
     return new ListView(
       children: children,
     );
   }
 
-  Widget txtAddr(date) {
+  Widget txtTimeLine(date) {
     //loadData();
     return Container(
       margin: EdgeInsets.fromLTRB(10, 15, 15, 10),
@@ -158,5 +170,57 @@ class _TimelineState extends State<Timeline> {
         chk = true;
       });
     }
+  }
+
+  Future<void> getStatus() async {
+    dbTimeline.child(user.uid!).once().then((DataSnapshot snapshot) async {
+      //print('Status');
+      //print(snapshot.value['Status']);
+      // setState(() {
+      //   status = snapshot.key;
+      //   print(status);
+      // });
+
+      Map<dynamic, dynamic> values = snapshot.value;
+      //print(values.toString());
+      values.forEach((k, v) async {
+        setState(() {
+          //print('Name : ' + v["Name"]);
+          status = k;
+          print(status);
+        });
+      });
+    });
+  }
+
+  Widget btnSubmit(val, color) {
+    var size = MediaQuery.of(context).size;
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: color,
+      ),
+      onPressed: () {
+        if (val == 'บันทึก') {
+          if (formKey.currentState!.validate()) {
+            formKey.currentState!.save();
+            //updateData();
+            sendData();
+            // file == null ? updateData2() : updateData();
+            //formKey.currentState!.reset();
+          }
+          print(textList);
+        } else {
+          chk = false;
+          // Navigator.pop(context);
+        }
+      },
+      child: Text(
+        val,
+        style: TextStyle(
+          fontSize: size.width * 0.05,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
 }

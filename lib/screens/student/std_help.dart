@@ -55,6 +55,13 @@ class _StudentHelpState extends State<StudentHelp> {
         });
       });
     }
+    @override
+    void dispose() {
+      isMount = false;
+      timer.cancel();
+      super.dispose();
+    }
+
     //timer = Timer.periodic(Duration(seconds: 5), (Timer t) => getStatus());
     messaging = FirebaseMessaging.instance;
     messaging.getToken().then((value) {
@@ -90,13 +97,6 @@ class _StudentHelpState extends State<StudentHelp> {
     });*/
     messaging.subscribeToTopic("messaging");
     //FirebaseMessaging.onBackgroundMessage(_messageHandler);
-  }
-
-  @override
-  void dispose() {
-    isMount = false;
-    timer.cancel();
-    super.dispose();
   }
 
   @override
