@@ -341,7 +341,6 @@ class _StudentHelpState extends State<StudentHelp> {
         'type': val,
         'status': 'รอยืนยัน',
       }).then((value) {
-        //formKey.currentState!.reset();
         print("Success");
       }).catchError((onError) {
         print(onError.code);

@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     
    <application
-        android:label="kmutnb_app"
+        android:label="TCY"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
