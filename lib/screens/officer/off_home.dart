@@ -1,8 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kmutnb_app/config/constant.dart';
 import 'package:kmutnb_app/screens/login/login_screen.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class OfficerHome extends StatefulWidget {
   static const routeName = '/';
@@ -103,8 +105,24 @@ class _OfficerHomeState extends State<OfficerHome> {
                           ],
                         ),
                       ),
-                      trailing: txtState(
-                        snapshot.value['Status'],
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          snapshot.value['Status'] == 'ติดเชื้อ'
+                              ? IconButton(
+                                  onPressed: () {
+                                    getStatus(snapshot.key);
+                                  },
+                                  icon: Icon(
+                                    Icons.timeline,
+                                    color: Colors.blue[700],
+                                  ),
+                                )
+                              : Container(),
+                          txtState(
+                            snapshot.value['Status'],
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -150,13 +168,13 @@ class _OfficerHomeState extends State<OfficerHome> {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    snapshot.value['Addr'] != null
+                    snapshot.value['Status'] == 'ติดเชื้อ'
                         ? IconButton(
                             onPressed: () {
-                              //_viewAddr(context, snapshot.value['Addr']);
+                              getStatus(snapshot.key);
                             },
                             icon: Icon(
-                              Icons.location_on,
+                              Icons.timeline,
                               color: Colors.blue[700],
                             ),
                           )
@@ -210,5 +228,94 @@ class _OfficerHomeState extends State<OfficerHome> {
         textAlign: TextAlign.center,
       ),
     );
+  }
+
+  dynamic _listKey, _listVal;
+  _viewAddr(context) {
+    var size = MediaQuery.of(context).size;
+
+    Alert(
+        context: context,
+        title: "ไทม์ไลน์",
+        content: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            txtTimeLine(0),
+            txtTimeLine(6),
+            txtTimeLine(7),
+            txtTimeLine(8),
+            txtTimeLine(9),
+            txtTimeLine(10),
+            txtTimeLine(11),
+            txtTimeLine(12),
+            txtTimeLine(13),
+            txtTimeLine(1),
+            txtTimeLine(2),
+            txtTimeLine(3),
+            txtTimeLine(4),
+            txtTimeLine(5),
+          ],
+        ),
+        buttons: [
+          DialogButton(
+            color: Color(0XFF008C0E),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              "OK",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
+        ]).show();
+  }
+
+  Widget txtTimeLine(i) {
+    return Text('วันที่ ' + _listKey[i] + ' : ' + _listVal[i]);
+  }
+
+  Future<void> getStatus(id) async {
+    try {
+      await dbTimeline.child(id).once().then((DataSnapshot snapshot) async {
+        //print('Status');
+        //print(snapshot.value['Status']);
+        // setState(() {
+        //   status = snapshot.key;
+        //   print(status);
+        // });
+
+        Map<dynamic, dynamic> values = snapshot.value;
+        //print(values.toString());
+        //status.add(values);
+        _listKey = values.keys.toList();
+        _listVal = values.values.toList();
+        print(_listKey);
+        print(_listVal);
+        values.forEach((k, v) async {
+          setState(() {
+            //print('Name : ' + v["Name"]);
+
+            //print(status);
+          });
+        });
+      });
+      _viewAddr(context);
+    } catch (e) {
+      print(e);
+
+      Alert(context: context, content: Text('ไม่มีข้อมูล'), buttons: [
+        DialogButton(
+          color: Color(0XFF008C0E),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            "OK",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        )
+      ]).show();
+    }
   }
 }

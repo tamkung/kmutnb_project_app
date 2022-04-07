@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kmutnb_app/config/constant.dart';
 
-class Timeline extends StatefulWidget {
-  const Timeline({Key? key}) : super(key: key);
+class ViewTimeline extends StatefulWidget {
+  const ViewTimeline({Key? key}) : super(key: key);
 
   @override
-  _TimelineState createState() => _TimelineState();
+  _ViewTimelineState createState() => _ViewTimelineState();
 }
 
-class _TimelineState extends State<Timeline> {
+class _ViewTimelineState extends State<ViewTimeline> {
   dynamic user = FirebaseAuth.instance.currentUser!;
   final formKey = GlobalKey<FormState>();
   var dateTime = new DateTime.now();
@@ -51,17 +51,6 @@ class _TimelineState extends State<Timeline> {
         '1 : ${dateList[0]}': textList[0],
         '2 : ${dateList[1]}': textList[1],
         '3 : ${dateList[2]}': textList[2],
-        '4 : ${dateList[3]}': textList[3],
-        '5 : ${dateList[4]}': textList[4],
-        '6 : ${dateList[5]}': textList[5],
-        '7 : ${dateList[6]}': textList[6],
-        '8 : ${dateList[7]}': textList[7],
-        '9 : ${dateList[8]}': textList[8],
-        '10 : ${dateList[9]}': textList[9],
-        '11 : ${dateList[10]}': textList[10],
-        '12 : ${dateList[11]}': textList[11],
-        '13 : ${dateList[12]}': textList[12],
-        '14 : ${dateList[13]}': textList[13],
       }).then((value) async {
         textList = [];
         formKey.currentState!.reset();
@@ -117,7 +106,7 @@ class _TimelineState extends State<Timeline> {
   Widget showDate2() {
     var size = MediaQuery.of(context).size;
     final children = <Widget>[];
-    for (var i = 1; i <= 14; i++) {
+    for (var i = 1; i <= 3; i++) {
       var newDate = DateTime(dateTime.year, dateTime.month, dateTime.day - i);
       String formattedDate = DateFormat('dd-MM-yyyy').format(newDate);
       dateList.add(formattedDate);

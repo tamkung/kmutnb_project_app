@@ -21,6 +21,7 @@ import 'package:kmutnb_app/screens/notlogin/covid_manual_1_not.dart';
 import 'package:kmutnb_app/screens/notlogin/pr_kmutnb_not.dart';
 import 'package:kmutnb_app/screens/officer/off_launcher.dart';
 import 'package:kmutnb_app/screens/officer/off_login.dart';
+import 'package:kmutnb_app/screens/officer/view_timeline.dart';
 import 'package:kmutnb_app/screens/pr_kmutnb.dart';
 import 'package:kmutnb_app/screens/search.dart';
 import 'package:kmutnb_app/screens/student/help/contact.dart';
@@ -147,6 +148,7 @@ class MyApp extends StatelessWidget {
           //
           //'NotiFire': (context) => NotiFire(),
           'Upload': (context) => UploadFire(),
+          'ViewTimeline': (context) => ViewTimeline(),
 
           //
           'SuperAdmin': (context) => SuperAdminHome(),
