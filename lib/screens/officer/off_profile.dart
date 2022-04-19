@@ -71,11 +71,18 @@ class _OfficerProfileState extends State<OfficerProfile> {
                               height: size.height * 0.01,
                             ),
                             contain(
-                                'เบอร์โทรศัพท์ :', '${snapshot.value['Tel']}'),
+                                'เบอร์โทรศัพท์ :',
+                                snapshot.value['Tel'] == null
+                                    ? 'ไม่มีข้อมูล'
+                                    : '${snapshot.value['Tel']}'),
                             SizedBox(
                               height: size.height * 0.01,
                             ),
-                            contain('ไอดีไลน์ :', '${snapshot.value['Line']}'),
+                            contain(
+                                'ไอดีไลน์ :',
+                                snapshot.value['Tel'] == null
+                                    ? 'ไม่มีข้อมูล'
+                                    : '${snapshot.value['Line']}'),
                             SizedBox(
                               height: size.height * 0.03,
                             ),

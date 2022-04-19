@@ -29,49 +29,51 @@ class _StudentProfileState extends State<StudentProfile> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    List<int> id = [];
-    List<int> dep = [];
-    int n1, n2;
-    var dep_name;
-    //print(user!.email.length);
-    for (var i = 1; i <= 13; i++) {
-      //print(user!.email[i]);
-      n1 = int.parse(user!.email[i]);
-      id.add(n1);
-    }
-    for (var i = 4; i <= 6; i++) {
-      //print(user!.email[i]);
-      n2 = int.parse(user!.email[i]);
-      dep.add(n2);
-    }
+    // List<int> id = [];
+    // List<int> dep = [];
+    // int n1, n2;
+    // var dep_name;
+    // //print(user!.email.length);
+    // for (var i = 1; i <= 13; i++) {
+    //   //print(user!.email[i]);
+    //   n1 = int.parse(user!.email[i]);
+    //   id.add(n1);
+    // }
+    // for (var i = 4; i <= 6; i++) {
+    //   //print(user!.email[i]);
+    //   n2 = int.parse(user!.email[i]);
+    //   dep.add(n2);
+    // }
 
-    print(id.join().toString());
-    print(dep.join().toString());
-    if (int.parse(dep.join()) == 0) {
-      dep_name = 'วิศวกรรมศาสตร์';
-    } else if (int.parse(dep.join()) == 204) {
-      dep_name = 'ครุศาสตร์อุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'เทคโนโลยีและการจัดการอุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'วิทยาศาสตร์ประยุกต์';
-    } else if (int.parse(dep.join()) == 524) {
-      dep_name = 'วิทยาลัยเทคโนโลยีอุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'สถาปัตยกรรมและการออกแบบ';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'อุตสาหกรรมเกษตร';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'พัฒนาธุรกิจและอุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'บริหารธุรกิจและอุตสาหกรรมบริการ';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'วิศวกรรมศาสตร์และเทคโนโลยี';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'วิทยาศาสตร์ พลังงาน และสิ่งแวดล้อม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'บริหารธุรกิจ';
-    }
+    // print(id.join().toString());
+    // print(dep.join().toString());
+    // if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'วิศวกรรมศาสตร์';
+    // } else if (int.parse(dep.join()) == 204) {
+    //   dep_name = 'ครุศาสตร์อุตสาหกรรม';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'เทคโนโลยีและการจัดการอุตสาหกรรม';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'วิทยาศาสตร์ประยุกต์';
+    // } else if (int.parse(dep.join()) == 305) {
+    //   dep_name = 'วิทยาลัยเทคโนโลยีอุตสาหกรรม';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'สถาปัตยกรรมและการออกแบบ';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'อุตสาหกรรมเกษตร';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'พัฒนาธุรกิจและอุตสาหกรรม';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'บริหารธุรกิจและอุตสาหกรรมบริการ';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'วิศวกรรมศาสตร์และเทคโนโลยี';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'วิทยาศาสตร์ พลังงาน และสิ่งแวดล้อม';
+    // } else if (int.parse(dep.join()) == 0) {
+    //   dep_name = 'บริหารธุรกิจ';
+    // } else {
+    //   dep_name = 'ไม่มีข้อมูล';
+    // }
 
     return Scaffold(
       body: Container(
@@ -127,13 +129,19 @@ class _StudentProfileState extends State<StudentProfile> {
                                 SizedBox(
                                   height: size.height * 0.01,
                                 ),
-                                contain('เบอร์โทรศัพท์ :',
-                                    '${snapshot.value['Tel']}'),
+                                contain(
+                                    'เบอร์โทรศัพท์ :',
+                                    snapshot.value['Tel'] == null
+                                        ? 'ไม่มีข้อมูล'
+                                        : '${snapshot.value['Tel']}'),
                                 SizedBox(
                                   height: size.height * 0.01,
                                 ),
-                                contain('ที่อยู่ :',
-                                    '${snapshot.value['Address']}'),
+                                contain(
+                                    'ที่อยู่ :',
+                                    snapshot.value['Address'] == null
+                                        ? 'ไม่มีข้อมูล'
+                                        : '${snapshot.value['Address']}'),
                                 SizedBox(
                                   height: size.height * 0.03,
                                 ),

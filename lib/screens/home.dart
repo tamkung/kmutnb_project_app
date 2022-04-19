@@ -227,13 +227,17 @@ class _HomeScreenState extends State<HomeScreen> {
       await Navigator.pushNamed(context, "Launcher");
       //await SignInDemoState().createData();
 
-    } else if (user!.email == 'tamkung489@gmail.com') {
+    } else if (user!.email == 'tcya30@gmail.com') {
       await createData(
           user!.uid, user!.email, user!.displayName, user!.photoURL, "Off");
       Navigator.pop(context);
       Navigator.pushNamed(context, "OfficerLaun");
+    } else if (user!.email == 'hm82529@gmail.com') {
+      Navigator.pop(context);
+      Navigator.pushNamed(context, "SuperAdmin");
     } else {
       print(emailValid);
+      Navigator.pop(context);
       SignInDemoState().signOutFromGoogle();
       _onBasicAlertPressed(context);
     }
@@ -261,6 +265,10 @@ class _HomeScreenState extends State<HomeScreen> {
       print(dep.join().toString());
       if (int.parse(dep.join()) == 204) {
         dep_name = 'ครุศาสตร์อุตสาหกรรม';
+      } else if (int.parse(dep.join()) == 305) {
+        dep_name = 'วิทยาลัยเทคโนโลยีอุตสาหกรรม';
+      } else {
+        dep_name = 'ไม่มีข้อมูล';
       }
       var url = Uri.parse(imgURL);
       final http.Response responseData = await http.get(url);

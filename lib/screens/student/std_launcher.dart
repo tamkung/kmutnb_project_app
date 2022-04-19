@@ -183,7 +183,7 @@ class _LauncherState extends State<Launcher> {
       dep_name = 'เทคโนโลยีและการจัดการอุตสาหกรรม';
     } else if (int.parse(dep.join()) == 0) {
       dep_name = 'วิทยาศาสตร์ประยุกต์';
-    } else if (int.parse(dep.join()) == 524) {
+    } else if (int.parse(dep.join()) == 305) {
       dep_name = 'วิทยาลัยเทคโนโลยีอุตสาหกรรม';
     } else if (int.parse(dep.join()) == 0) {
       dep_name = 'สถาปัตยกรรมและการออกแบบ';
@@ -199,6 +199,8 @@ class _LauncherState extends State<Launcher> {
       dep_name = 'วิทยาศาสตร์ พลังงาน และสิ่งแวดล้อม';
     } else if (int.parse(dep.join()) == 0) {
       dep_name = 'บริหารธุรกิจ';
+    } else {
+      dep_name = 'ไม่มีข้อมูล';
     }
     return Drawer(
       child: ListView(
