@@ -173,7 +173,7 @@ class AllFunction {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => PDFViewer(
+        builder: (_) => PDFViewer1(
           url: url,
           name: name,
         ),

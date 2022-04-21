@@ -73,13 +73,12 @@ class _HomeScreenState extends State<HomeScreen> {
               color: pColor,
             ),
           ),
-          /*
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, 'Upload');
-            },
-            icon: Icon(Icons.upload),
-          ),*/
+          // IconButton(
+          //   onPressed: () {
+          //     Navigator.pushNamed(context, 'testpdf');
+          //   },
+          //   icon: Icon(Icons.upload),
+          // ),
         ],
       ),
       body: Container(
@@ -125,22 +124,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 buttonType: ButtonType.google,
                 onPressed: () async {
                   print('click');
-                  await getLocationLogin();
+                  print(login);
+                  login == false ? login = true : login = false;
+                  if (login == true) {
+                    await getLocationLogin();
 
-                  await SignInDemoState().signInwithGoogle();
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (BuildContext context) {
-                      return Dialog(
-                        child: Loading(),
-                      );
-                    },
-                  );
+                    await SignInDemoState().signInwithGoogle();
 
-                  // EasyLoading.show(status: 'loading...');
-                  await chk();
-                  login = true;
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          child: Loading(),
+                        );
+                      },
+                    );
+
+                    // EasyLoading.show(status: 'loading...');
+                    await chk();
+                  } else {
+                    print(login);
+                  }
+
+                  // login = true;
                   // print('click');
                   // await getLocationLogin();
                   // await SignInDemoState().signInwithGoogle();
@@ -227,6 +234,11 @@ class _HomeScreenState extends State<HomeScreen> {
       await Navigator.pushNamed(context, "Launcher");
       //await SignInDemoState().createData();
 
+    } else if (emailValid2) {
+      await createData(
+          user!.uid, user!.email, user!.displayName, user!.photoURL, "Off");
+      Navigator.pop(context);
+      Navigator.pushNamed(context, "OfficerLaun");
     } else if (user!.email == 'tcya30@gmail.com') {
       await createData(
           user!.uid, user!.email, user!.displayName, user!.photoURL, "Off");
@@ -471,7 +483,7 @@ class _HomeScreenState extends State<HomeScreen> {
           sizeBoxDrawer(),
           menu1(context, 'สถานที่ตรวจเชื้อ', 'Hospital'),
           sizeBoxDrawer(),
-          menu1(context, 'โรงพบาบาลใกล้ฉัน', 'Map'),
+          menu1(context, 'โรงพยาบาลใกล้ฉัน', 'Map'),
           sizeBoxDrawer(),
           menu1(context, 'การประชาสัมพันธ์', 'PR'),
           sizeBoxDrawer(),

@@ -153,7 +153,7 @@ class _OfficerLauncherState extends State<OfficerLauncher> {
           sizeBoxDrawer(),
           menu1(context, 'สถานที่ตรวจเชื้อ', 'Hospital'),
           sizeBoxDrawer(),
-          menu1(context, 'โรงพบาบาลใกล้ฉัน', 'Map'),
+          menu1(context, 'โรงพยาบาลใกล้ฉัน', 'Map'),
           sizeBoxDrawer(),
           menu1(context, 'การประชาสัมพันธ์', 'PR'),
           sizeBoxDrawer(),

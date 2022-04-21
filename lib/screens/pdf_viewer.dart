@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:kmutnb_app/config/constant.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class PDFViewer extends StatefulWidget {
+class PDFViewer1 extends StatefulWidget {
   final String url, name;
-  const PDFViewer({Key? key, required this.url, required this.name})
+  const PDFViewer1({Key? key, required this.url, required this.name})
       : super(key: key);
 
   @override
-  _PDFViewerState createState() => _PDFViewerState();
+  _PDFViewer1State createState() => _PDFViewer1State();
 }
 
-class _PDFViewerState extends State<PDFViewer> {
+class _PDFViewer1State extends State<PDFViewer1> {
   late PdfViewerController _pdfViewerController;
   final GlobalKey<SfPdfViewerState> _pdfViewerStateKey = GlobalKey();
   @override

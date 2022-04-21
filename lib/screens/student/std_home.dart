@@ -93,23 +93,6 @@ class _StudentHomeState extends State<StudentHome> {
     var size = MediaQuery.of(context).size;
     setdata();
     return Scaffold(
-      floatingActionButton: Container(
-        child: IconButton(
-          onPressed: () {
-            if (view) {
-              setState(() {
-                view = false;
-              });
-            } else if (!view) {
-              setState(() {
-                view = true;
-              });
-            }
-          },
-          icon:
-              view == false ? Icon(Icons.expand_more) : Icon(Icons.expand_less),
-        ),
-      ),
       body: Container(
         color: pColor,
         //color: pColor,
@@ -265,15 +248,19 @@ class _StudentHomeState extends State<StudentHome> {
                                       ? Image.network(txt_urlToImage)
                                       : Text('ไม่มีรูปภาพ'),
                                   Text(txt_description ?? ''),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text('แหล่งที่มา : ' + txt_author),
-                                      SizedBox(
-                                        width: size.width * 0.05,
-                                      ),
-                                      Text('วันที่ : ' + txt_publishedAt),
-                                    ],
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text('แหล่งที่มา : ' + txt_author),
+                                        SizedBox(
+                                          width: size.width * 0.05,
+                                        ),
+                                        Text('วันที่ : ' + txt_publishedAt),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

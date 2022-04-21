@@ -28,7 +28,7 @@ class _MapScreenState extends State<MapScreen2> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "โรงพบาบาลใกล้ฉัน",
+            "โรงพยาบาลใกล้ฉัน",
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
