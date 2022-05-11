@@ -219,7 +219,6 @@ class _HelpToolState extends State<HelpTool> {
     var size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      //color: Colors.amberAccent,
       child: Row(
         children: [
           Expanded(

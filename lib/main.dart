@@ -33,7 +33,7 @@ import 'package:kmutnb_app/services/places_service.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/notlogin/covid_manual_2.dart';
+import 'screens/notlogin/covid_manual_2_not.dart';
 import 'screens/student/help/change_status.dart';
 import 'screens/student/help/help_food.dart';
 import 'screens/student/help/help_menu.dart';

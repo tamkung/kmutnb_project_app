@@ -32,7 +32,7 @@ const txtload = Text(
 );
 
 const homeName =
-    'แอปพลิเคชันช่วยเหลือนักศึกษามหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือในสถานการณ์โควิด 19';
+    'แอปติดตามการกักตัวสถานการณ์แพร่ระบาดโควิด19 นักศึกษามหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ';
 
 final dbAlert = FirebaseDatabase.instance.reference().child('Alert');
 final dbStd = FirebaseDatabase.instance.reference().child('Student');

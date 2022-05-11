@@ -112,14 +112,6 @@ class _StudentHelpState extends State<StudentHelp> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.circular(20),
-                      //   boxShadow: [
-                      //     BoxShadow(
-                      //          color: Colors.black.withOpacity(0.7),
-                      //         )
-                      //   ],
-                      // ),
                       child: Container(
                         height: 100,
                         child: ListView(
@@ -525,6 +517,7 @@ class _StudentHelpState extends State<StudentHelp> {
         fileName = null;
         imageFile = null;
         file = null;
+        fileVal = null;
         final snackBar = SnackBar(content: Text('อัปเดตสำเร็จ'));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else {

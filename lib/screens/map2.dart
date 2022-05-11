@@ -34,14 +34,6 @@ class _MapScreenState extends State<MapScreen2> {
             ),
           ),
           backgroundColor: pColor,
-          actions: <Widget>[
-            // IconButton(
-            //   icon: Icon(Icons.refresh),
-            //   onPressed: () {
-            //     setState(() {});
-            //   },
-            // ),
-          ],
         ),
         body: (currentPosition != null)
             ? Consumer<List<Place>>(

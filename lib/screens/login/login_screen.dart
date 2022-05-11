@@ -94,11 +94,6 @@ class SignInDemoState extends State<SignInDemo> {
   }
 
   Future<String?> signInwithGoogle() async {
-    /*
-    bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z]+\.+kmutnb+\.ac+\.th")
-        .hasMatch(user!.email);
-    if (emailValid) {*/
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await _googleSignIn.signIn();

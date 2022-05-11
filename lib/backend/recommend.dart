@@ -29,8 +29,8 @@ Widget buildSlideList(Slide slide, dynamic context) {
                 Radius.circular(15),
               ),
             ),
-            height: 170,
-            width: 330,
+            height: 160,
+            width: 340,
           ),
         ),
         // SizedBox(

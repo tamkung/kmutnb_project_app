@@ -39,8 +39,6 @@ class _OfficerMapState extends State<OfficerMap> {
     });
   }
 
-  
-
   Set<Marker> getmarkers() {
     //markers to place on map
     Future.delayed(Duration(seconds: 5), () {
@@ -48,8 +46,6 @@ class _OfficerMapState extends State<OfficerMap> {
       var db = FirebaseDatabase.instance.reference().child("Student");
 
       db.once().then((DataSnapshot snapshot) async {
-        
-
         final Uint8List pinRed = await getBytesFromAsset(
             path: 'assets/images/pin_red.png', //paste the custom image path
             width: 80 // size of custom image as marker
@@ -160,12 +156,6 @@ class _OfficerMapState extends State<OfficerMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     getMarker();
-      //   },
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       body: check == false
           ? Center(
               child: txtload,

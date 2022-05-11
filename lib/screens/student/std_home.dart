@@ -95,7 +95,6 @@ class _StudentHomeState extends State<StudentHome> {
     return Scaffold(
       body: Container(
         color: pColor,
-        //color: pColor,
         child: chk != false
             ? Column(
                 children: [

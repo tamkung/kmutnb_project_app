@@ -12,8 +12,6 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
-  final dbfirebase = FirebaseDatabase.instance.reference().child('Officer');
-  final dbfirebase2 = FirebaseDatabase.instance.reference().child('Hotline');
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -193,7 +191,7 @@ class _ContactState extends State<Contact> {
                   ],
                 ),
                 child: FirebaseAnimatedList(
-                  query: dbfirebase2,
+                  query: dbTel,
                   itemBuilder: (context, snapshot, animation, index) {
                     return Column(
                       children: [

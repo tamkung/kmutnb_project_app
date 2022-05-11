@@ -6,6 +6,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kmutnb_app/config/constant.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Timeline extends StatefulWidget {
   const Timeline({Key? key}) : super(key: key);
@@ -90,11 +91,19 @@ class _TimelineState extends State<Timeline> {
       appBar: AppBar(
         title: Text('ไทม์ไลน์ย้อนหลัง 14 วัน'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              getStatus2();
+            },
+            icon: Icon(Icons.remove_red_eye),
+          )
+        ],
       ),
       body: Container(
         child: Form(
           key: formKey,
-          child: chk == false ? showDate() : showDate2(),
+          child: chk == false ? showDate() : showDateChoose(),
         ),
       ),
     );
@@ -114,7 +123,7 @@ class _TimelineState extends State<Timeline> {
     );
   }
 
-  Widget showDate2() {
+  Widget showDateChoose() {
     var size = MediaQuery.of(context).size;
     final children = <Widget>[];
     for (var i = 1; i <= 14; i++) {
@@ -197,7 +206,7 @@ class _TimelineState extends State<Timeline> {
       values.forEach((k, v) async {
         setState(() {
           //print('Name : ' + v["Name"]);
-          status = k;
+          status = v;
           print(status);
         });
       });
@@ -233,5 +242,98 @@ class _TimelineState extends State<Timeline> {
         ),
       ),
     );
+  }
+
+  //////////
+  dynamic _listKey, _listVal;
+  _viewAddr(context) {
+    var size = MediaQuery.of(context).size;
+
+    Alert(
+        context: context,
+        title: "ไทม์ไลน์",
+        content: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            txtTimeLine2(0),
+            txtTimeLine2(6),
+            txtTimeLine2(7),
+            txtTimeLine2(8),
+            txtTimeLine2(9),
+            txtTimeLine2(10),
+            txtTimeLine2(11),
+            txtTimeLine2(12),
+            txtTimeLine2(13),
+            txtTimeLine2(1),
+            txtTimeLine2(2),
+            txtTimeLine2(3),
+            txtTimeLine2(4),
+            txtTimeLine2(5),
+          ],
+        ),
+        buttons: [
+          DialogButton(
+            color: Color(0XFF008C0E),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              "OK",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
+        ]).show();
+  }
+
+  Widget txtTimeLine2(i) {
+    return Text('วันที่ ' + _listKey[i] + ' : ' + _listVal[i]);
+  }
+
+  Future<void> getStatus2() async {
+    try {
+      await dbTimeline
+          .child(user.uid!)
+          .once()
+          .then((DataSnapshot snapshot) async {
+        //print('Status');
+        //print(snapshot.value['Status']);
+        // setState(() {
+        //   status = snapshot.key;
+        //   print(status);
+        // });
+
+        Map<dynamic, dynamic> values = snapshot.value;
+        //print(values.toString());
+        //status.add(values);
+        _listKey = values.keys.toList();
+        _listVal = values.values.toList();
+        print(_listKey);
+        print(_listVal);
+        values.forEach((k, v) async {
+          setState(() {
+            //print('Name : ' + v["Name"]);
+
+            //print(status);
+          });
+        });
+      });
+      await _viewAddr(context);
+    } catch (e) {
+      print(e);
+
+      Alert(context: context, content: Text('ไม่มีข้อมูล'), buttons: [
+        DialogButton(
+          color: Color(0XFF008C0E),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            "OK",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        )
+      ]).show();
+    }
   }
 }

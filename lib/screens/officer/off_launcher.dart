@@ -116,6 +116,7 @@ class _OfficerLauncherState extends State<OfficerLauncher> {
   }
 
   dynamic user = FirebaseAuth.instance.currentUser!;
+
   Widget drawerAppBarLogin(context) {
     var size = MediaQuery.of(context).size;
     return Drawer(

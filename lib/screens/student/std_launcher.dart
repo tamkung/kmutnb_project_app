@@ -167,7 +167,7 @@ class _LauncherState extends State<Launcher> {
       n1 = int.parse(user!.email[i]);
       id.add(n1);
     }
-    for (var i = 4; i <= 6; i++) {
+    for (var i = 3; i <= 4; i++) {
       //print(user!.email[i]);
       n2 = int.parse(user!.email[i]);
       dep.add(n2);
@@ -175,36 +175,45 @@ class _LauncherState extends State<Launcher> {
 
     //print(id.join().toString());
     //print(dep.join().toString());
-    if (int.parse(dep.join()) == 0) {
+    if (int.parse(dep.join()) == 01) {
       dep_name = 'วิศวกรรมศาสตร์';
-    } else if (int.parse(dep.join()) == 204) {
+    } else if (int.parse(dep.join()) == 02) {
       dep_name = 'ครุศาสตร์อุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'เทคโนโลยีและการจัดการอุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'วิทยาศาสตร์ประยุกต์';
-    } else if (int.parse(dep.join()) == 305) {
+    } else if (int.parse(dep.join()) == 03) {
       dep_name = 'วิทยาลัยเทคโนโลยีอุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'สถาปัตยกรรมและการออกแบบ';
-    } else if (int.parse(dep.join()) == 0) {
+    } else if (int.parse(dep.join()) == 04) {
+      dep_name = 'วิทยาศาสตร์ประยุกต์';
+    } else if (int.parse(dep.join()) == 05) {
       dep_name = 'อุตสาหกรรมเกษตร';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'พัฒนาธุรกิจและอุตสาหกรรม';
-    } else if (int.parse(dep.join()) == 0) {
-      dep_name = 'บริหารธุรกิจและอุตสาหกรรมบริการ';
-    } else if (int.parse(dep.join()) == 0) {
+    } else if (int.parse(dep.join()) == 06) {
+      dep_name = 'เทคโนโลยีและการจัดการอุตสาหกรรม';
+    } else if (int.parse(dep.join()) == 07) {
+      dep_name = 'เทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล';
+    } else if (int.parse(dep.join()) == 08) {
+      dep_name = 'ศิลปศาสตร์ประยุกต์';
+    } else if (int.parse(dep.join()) == 09) {
+      dep_name = 'บัณฑิตวิทยาลัยวิศวกรรมศาสตร์นานาชาติฯ';
+    } else if (int.parse(dep.join()) == 10) {
+      dep_name = 'บัณฑิตวิทยาลัย';
+    } else if (int.parse(dep.join()) == 11) {
+      dep_name = 'สถาปัตยกรรมและการออกแบบ';
+    } else if (int.parse(dep.join()) == 12) {
       dep_name = 'วิศวกรรมศาสตร์และเทคโนโลยี';
-    } else if (int.parse(dep.join()) == 0) {
+    } else if (int.parse(dep.join()) == 13) {
       dep_name = 'วิทยาศาสตร์ พลังงาน และสิ่งแวดล้อม';
-    } else if (int.parse(dep.join()) == 0) {
+    } else if (int.parse(dep.join()) == 14) {
       dep_name = 'บริหารธุรกิจ';
+    } else if (int.parse(dep.join()) == 15) {
+      dep_name = 'วิทยาลัยนานาชาติ';
+    } else if (int.parse(dep.join()) == 16) {
+      dep_name = 'พัฒนาธุรกิจและอุตสาหกรรม';
+    } else if (int.parse(dep.join()) == 17) {
+      dep_name = 'บริหารธุรกิจและอุตสาหกรรมบริการ';
     } else {
       dep_name = 'ไม่มีข้อมูล';
     }
     return Drawer(
       child: ListView(
-        // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(

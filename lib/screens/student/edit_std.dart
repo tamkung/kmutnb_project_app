@@ -63,12 +63,6 @@ class _EditProfileStdState extends State<EditProfileStd> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("asset/image/bg1.png"),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
           child: Form(
             key: formKey,
             child: Padding(
